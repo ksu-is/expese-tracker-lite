@@ -1,5 +1,5 @@
 # expese-tracker-lite
-# 💰 Expense Tracker Lite
+# Expense Tracker Lite
 
 ## Overview
 Expense Tracker Lite is a Python program that helps users record, view, and manage their daily expenses.  
