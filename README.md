@@ -1,4 +1,4 @@
-# expese-tracker-lite
+# expense-tracker-lite
 # Expense Tracker Lite
 
 ## Overview
@@ -22,7 +22,11 @@ It’s also a great beginner project for Python developers learning about file h
 - Filter by category or date  
 - Save and load data from `expenses.csv`  
 - (Optional) Visualize expenses with Matplotlib charts  
-- (Optional) Tkinter interface for GUI version  
+- (Optional) Tkinter interface for GUI version
+
+## Author
+Bassel Sbaity
+Kennesaw State University
 
 
 
