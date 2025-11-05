@@ -7,6 +7,11 @@ It is designed to be simple and lightweight, allowing anyone to track spending w
 All data is stored in a CSV file, and users can view totals, filter by category, and calculate overall spending.  
 Optional features include generating charts with Matplotlib and a Tkinter GUI version for a visual interface.
 
+## Inspiration 
+
+https://github.com/ksu-is/daily_expense_tracker.git
+
+
 
 
 ## Who Can Use It
