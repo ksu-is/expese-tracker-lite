@@ -56,56 +56,68 @@ class ExpenseTracker:
         self.save_expenses_to_file()
 
         # Calculate total of a list of expenses (or all)
-        def total_expenses(self, expenses=None):
+    def total_expenses(self, expenses=None):
             if expenses is None:
                 expenses = self.expenses
             return sum(e['amount'] for e in expenses)
 
         # Calculate totals by category
-        def totals_by_category(self, expenses=None):
-            if expenses is None:
-                expenses = self.expenses
-            totals = {}
-            for e in expenses:
-                cat = e['category']
-                totals[cat] = totals.get(cat, 0.0) + e['amount']
-            return totals
+    def totals_by_category(self, expenses=None):
+        if expenses is None:
+            expenses = self.expenses
+        totals = {}
+        for e in expenses:
+            cat = e['category']
+            totals[cat] = totals.get(cat, 0.0) + e['amount']
+        return totals
+    
+    def clear_all_expenses(self):
+        """Remove all expenses from memory and wipe the CSV file."""
+        # Clear the list in memory
+        self.expenses = []
 
-        # Filter expenses by category
-        def filter_by_category(self, category):
-            return [e for e in self.expenses
-                    if e['category'].lower() == category.lower()]
+        with self.file_path.open("w", newline="", encoding="utf-8") as f:
+            fieldnames = ["date", "category", "description", "amount"]
+            writer = csv.DictWriter(f, fieldnames = fieldnames)
+            writer.writeheader()
 
-        # Filter expenses by exact date
-        def filter_by_date(self, date):
-            return [e for e in self.expenses if e['date'] == date]
+        print("\nAll expenses have been cleared.")
 
-        # Method to display expenses (all or a filtered list)
-        def display_expenses(self, expenses=None):
-            if expenses is None:
-                expenses = self.expenses
+    # Filter expenses by category
+    def filter_by_category(self, category):
+        return [e for e in self.expenses
+                if e['category'].lower() == category.lower()]
 
-            # Check if there are no expenses recorded
-            if not expenses:
-                print("\nNo expenses recorded.")
-            else:
-                # Display a table header for Date, Category, Description, and Amount
-                print("\n{:<12} {:<15} {:<25} {:<15}".format(
-                    "Date", "Category", "Description", "Amount"))
-                print("-" * 75)
-                total_expense = 0
-                # Iterate through each expense and display its details
-                for expense in expenses:
-                    print("{:<12} {:<15} {:<25} ${:<13,.2f}".format(
-                        expense['date'],
-                        expense['category'],
-                        expense['description'],
-                        expense['amount']
-                    ))
-                    total_expense += expense['amount']
-                print("-" * 75)
-                # Display the total of all expenses
-                print("{:<54} ${:<13,.2f}".format("Total Expenses:", total_expense))
+    # Filter expenses by exact date
+    def filter_by_date(self, date):
+        return [e for e in self.expenses if e['date'] == date]
+
+    # Method to display expenses (all or a filtered list)
+    def display_expenses(self, expenses=None):
+        if expenses is None:
+            expenses = self.expenses
+
+        # Check if there are no expenses recorded
+        if not expenses:
+            print("\nNo expenses recorded.")
+        else:
+            # Display a table header for Date, Category, Description, and Amount
+            print("\n{:<12} {:<15} {:<25} {:<15}".format(
+                "Date", "Category", "Description", "Amount"))
+            print("-" * 75)
+            total_expense = 0
+            # Iterate through each expense and display its details
+            for expense in expenses:
+                print("{:<12} {:<15} {:<25} ${:<13,.2f}".format(
+                    expense['date'],
+                    expense['category'],
+                    expense['description'],
+                    expense['amount']
+                ))
+                total_expense += expense['amount']
+            print("-" * 75)
+            # Display the total of all expenses
+            print("{:<54} ${:<13,.2f}".format("Total Expenses:", total_expense))
 
 
 # Function to run the main Expense Tracker program
@@ -121,7 +133,8 @@ def main():
         print("2. Display All Expenses")
         print("3. View Totals (Overall & By Category)")
         print("4. Filter Expenses (By Category or Date)")
-        print("5. Exit")
+        print("5. Clear All Expenses")
+        print("6. Exit")
 
         # Get user choice
         choice = input("\nEnter your choice: ")
@@ -190,6 +203,14 @@ def main():
                 print("\nInvalid filter option.")
 
         elif choice == '5':
+            # Clear all expenses
+            confirm = input("\nAre you sure you want to delete ALL expenses? (y/n): ").lower()
+            if confirm == 'y':
+                expense_tracker.clear_all_expenses()
+            else:
+                print("\nCanceled. Expenses were not cleared.")
+        
+        elif choice == '6':
             # Exit the program
             print("\nExiting the Expense Tracker. Goodbye!")
             break
