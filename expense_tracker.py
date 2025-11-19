@@ -45,67 +45,67 @@ class ExpenseTracker:
 
     # Method to add a new expense to the list
    # Method to add a new expense to the list
-def add_expense(self, date, category, description, amount):
-    expense = {
-        'date': date,
-        'category': category,
-        'description': description,
-        'amount': amount
-    }
-    self.expenses.append(expense)
-    self.save_expenses_to_file()
+    def add_expense(self, date, category, description, amount):
+        expense = {
+            'date': date,
+            'category': category,
+            'description': description,
+            'amount': amount
+        }
+        self.expenses.append(expense)
+        self.save_expenses_to_file()
 
-    # Calculate total of a list of expenses (or all)
-    def total_expenses(self, expenses=None):
-        if expenses is None:
-            expenses = self.expenses
-        return sum(e['amount'] for e in expenses)
+        # Calculate total of a list of expenses (or all)
+        def total_expenses(self, expenses=None):
+            if expenses is None:
+                expenses = self.expenses
+            return sum(e['amount'] for e in expenses)
 
-    # Calculate totals by category
-    def totals_by_category(self, expenses=None):
-        if expenses is None:
-            expenses = self.expenses
-        totals = {}
-        for e in expenses:
-            cat = e['category']
-            totals[cat] = totals.get(cat, 0.0) + e['amount']
-        return totals
+        # Calculate totals by category
+        def totals_by_category(self, expenses=None):
+            if expenses is None:
+                expenses = self.expenses
+            totals = {}
+            for e in expenses:
+                cat = e['category']
+                totals[cat] = totals.get(cat, 0.0) + e['amount']
+            return totals
 
-    # Filter expenses by category
-    def filter_by_category(self, category):
-        return [e for e in self.expenses
-                if e['category'].lower() == category.lower()]
+        # Filter expenses by category
+        def filter_by_category(self, category):
+            return [e for e in self.expenses
+                    if e['category'].lower() == category.lower()]
 
-    # Filter expenses by exact date
-    def filter_by_date(self, date):
-        return [e for e in self.expenses if e['date'] == date]
+        # Filter expenses by exact date
+        def filter_by_date(self, date):
+            return [e for e in self.expenses if e['date'] == date]
 
-    # Method to display expenses (all or a filtered list)
-    def display_expenses(self, expenses=None):
-        if expenses is None:
-            expenses = self.expenses
+        # Method to display expenses (all or a filtered list)
+        def display_expenses(self, expenses=None):
+            if expenses is None:
+                expenses = self.expenses
 
-        # Check if there are no expenses recorded
-        if not expenses:
-            print("\nNo expenses recorded.")
-        else:
-            # Display a table header for Date, Category, Description, and Amount
-            print("\n{:<12} {:<15} {:<25} {:<15}".format(
-                "Date", "Category", "Description", "Amount"))
-            print("-" * 75)
-            total_expense = 0
-            # Iterate through each expense and display its details
-            for expense in expenses:
-                print("{:<12} {:<15} {:<25} ${:<13,.2f}".format(
-                    expense['date'],
-                    expense['category'],
-                    expense['description'],
-                    expense['amount']
-                ))
-                total_expense += expense['amount']
-            print("-" * 75)
-            # Display the total of all expenses
-            print("{:<54} ${:<13,.2f}".format("Total Expenses:", total_expense))
+            # Check if there are no expenses recorded
+            if not expenses:
+                print("\nNo expenses recorded.")
+            else:
+                # Display a table header for Date, Category, Description, and Amount
+                print("\n{:<12} {:<15} {:<25} {:<15}".format(
+                    "Date", "Category", "Description", "Amount"))
+                print("-" * 75)
+                total_expense = 0
+                # Iterate through each expense and display its details
+                for expense in expenses:
+                    print("{:<12} {:<15} {:<25} ${:<13,.2f}".format(
+                        expense['date'],
+                        expense['category'],
+                        expense['description'],
+                        expense['amount']
+                    ))
+                    total_expense += expense['amount']
+                print("-" * 75)
+                # Display the total of all expenses
+                print("{:<54} ${:<13,.2f}".format("Total Expenses:", total_expense))
 
 
 # Function to run the main Expense Tracker program
@@ -202,5 +202,3 @@ def main():
 # Run the main function if this script is executed
 if __name__ == "__main__":
     main()
-
-
