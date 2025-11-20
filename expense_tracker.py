@@ -1,5 +1,7 @@
 import csv
 from pathlib import Path
+from datetime import datetime
+
 
 # Define a class named ExpenseTracker to manage expenses
 class ExpenseTracker:
@@ -151,6 +153,14 @@ def main():
             if not date or not category or not description or not amount_input:
                 print("\nIncomplete input. Please provide values for date, category, description, and amount.")
             else:
+                # First, validate the date format
+                try:
+                    datetime.strptime(date, "%Y-%m-%d")
+                except ValueError:
+                    print("\nInvalid date format. Please use YYYY-MM-DD (example: 2025-11-19).")
+                    continue
+
+                # Then, validate the amount
                 try:
                     amount = float(amount_input)
                     if amount < 0:
