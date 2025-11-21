@@ -10,21 +10,17 @@
 # Sprint 2
 
 ## Planned Tasks
-- [ ] Add base ExpenseTracker class
-- [ ] Add CSV save/load to expenses.csv
-- [ ] Add description field to expenses
-- [ ] Add totals (overall + by category)
-- [ ] Add filter by category or date
-- [ ] Improve input validation and error messages
-- [ ] Test tracker with sample data
-
-## Emerging Ideas
-- [ ] Add filter by month
-- [ ] Add simple summary report (e.g., avg expense)
+- [x] Add base ExpenseTracker class
+- [x] Add CSV save/load to expenses.csv
+- [x] Add description field to expenses
+- [x] Add totals (overall + by category)
+- [x] Add filter by category or date
+- [x] Improve input validation and error messages
+- [x] Test tracker with sample data
 
 ### Emerging Tasks
-- Add persistent storage (e.g., save to file or CSV)  
-- Build a simple command-line interface for user interaction  
+- [x] Add persistent storage (e.g., save to file or CSV)  
+- [x] Build a simple command-line interface for user interaction  
 
 
 ## Sprint 3
