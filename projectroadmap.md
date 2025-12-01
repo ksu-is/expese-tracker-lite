@@ -24,6 +24,6 @@
 
 
 ## Sprint 3
-- Create a slide presentation summarizing the project  
-- Compile mistakes and lessons learned from development  
-- Prepare final submission and documentation  
+- [x] Create a slide presentation summarizing the project  
+- [x] Compile mistakes and lessons learned from development  
+- [x] Prepare final submission and documentation  
