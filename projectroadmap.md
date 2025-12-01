@@ -1,11 +1,11 @@
 ## Sprint 1
-- Brainstormed a topic & submitted it for approval  
-- Found an existing Python code base related to my topic  
-- Joined KSU-IS organization
-- Forked a repository into KSU-IS  
-- Updated `README.md`  
-- Tested the existing code to ensure it worked properly  
-- Updated `projectroadmap.md` with findings and goals 
+- [x] Brainstormed a topic & submitted it for approval  
+- [x] Found an existing Python code base related to my topic  
+- [x] Joined KSU-IS organization
+- [x] Forked a repository into KSU-IS  
+- [x] Updated `README.md`  
+- [x] Tested the existing code to ensure it worked properly  
+- [x] Updated `projectroadmap.md` with findings and goals 
 
 # Sprint 2
 
